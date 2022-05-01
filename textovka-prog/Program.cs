@@ -3,6 +3,3 @@ using textovka_prog;
 
 TestovaciTrida Objekt = new TestovaciTrida();
 Objekt.TestovaciMetodaTridy("hello there");
-
-//hello there
-//yasedlkfjhasdlkfjhasdlfjkh
