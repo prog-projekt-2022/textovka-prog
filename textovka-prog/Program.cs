@@ -7,4 +7,4 @@ Objekt.TestovaciMetodaTridy("hello there"); //konečně jsem gej :)
 
 
 
-//alůsdkfj aslůkfjasd
+//alůsdkfj aslůkfjas
