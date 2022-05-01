@@ -1,9 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using textovka_prog;
 
-Console.WriteLine("Hello, World!");
-
-do
-{
-    Console.WriteLine("test kamarad");
-} while (true);
-
+TestovaciTrida Objekt = new TestovaciTrida();
+Objekt.TestovaciMetodaTridy("hello there");
