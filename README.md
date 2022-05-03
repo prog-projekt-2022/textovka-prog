@@ -1,4 +1,4 @@
-<H1>Školní projekt na "funkční" textovou terminálovou hru</H1>
+<H1>Školní projekt na funkční* textovou terminálovou hru</H1>
 <br>
 
 Bude to nejspíše RPG textová hra napsaná v jazyku C#.
@@ -12,3 +12,6 @@ Hra bude napsána objektově, bude zapisovat postup hry do souborů <I>(aby bylo
         <LI>Importujte do IDE.</LI>
         <LI>Otevřete textovka-prog.sln, nebo přímo zdrojové kódy ve složce <I>textovka-prog</I>.</LI>
     </UL>
+
+
+<I>nemusí nutně znamenat spustitelnou hru</I>
