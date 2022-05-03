@@ -14,4 +14,4 @@ Hra bude napsána objektově, bude zapisovat postup hry do souborů <I>(aby bylo
     </UL>
 
 
-<I>nemusí nutně znamenat spustitelnou hru</I>
+<I>*nemusí nutně znamenat spustitelnou hru</I>
