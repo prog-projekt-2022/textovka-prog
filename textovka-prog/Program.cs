@@ -2,10 +2,6 @@
 using textovka_prog;
 
 TestovaciTrida Objekt = new TestovaciTrida(); 
-TestovaciTrida Objekt2 = new TestovaciTrida();   
-Objekt.TestovaciMetodaTridy("hello there"); //konečně jsem gej :)
-Objekt.TestovaciMetodaTridy("prdel");
+Objekt.TestovaciMetodaTridy("hello there"); 
 
-// testovací commit
 
-//hellothere
