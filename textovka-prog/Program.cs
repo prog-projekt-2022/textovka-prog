@@ -22,6 +22,8 @@
             {
                 Console.WriteLine("Říkají ti: {0}", aktualniHrac.jmeno);
             }
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 }
