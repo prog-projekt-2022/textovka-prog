@@ -1,13 +1,4 @@
-﻿<<<<<<<<< Temporary merge branch 1
-﻿// See https://aka.ms/new-console-template for more information
-using textovka_prog;
-
-TestovaciTrida Objekt = new TestovaciTrida(); 
-Objekt.TestovaciMetodaTridy("hello there"); 
-
-
-=========
-﻿namespace textovka_prog 
+﻿﻿namespace textovka_prog 
 {
     class Program 
     {
@@ -34,4 +25,3 @@ Objekt.TestovaciMetodaTridy("hello there");
         }
     }
 }
->>>>>>>>> Temporary merge branch 2
