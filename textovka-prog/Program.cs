@@ -13,7 +13,7 @@
             Console.WriteLine("Tvoje Jméno:");
             aktualniHrac.jmeno =Console.ReadLine();
             Console.Clear();
-            Console.WriteLine("Nějaký storyline tady {0}", aktualniHrac.jmeno); //ve storyline nejak pouzit jmeno zadane hracem
+            Console.WriteLine("Nějaký storyline tady {0}", aktualniHrac.jmeno); //ve storylinu nejak pouzit jmeno zadane hracem
             if (aktualniHrac.jmeno == null)
             {
                 Console.WriteLine("Ani nevíš své jméno....");
