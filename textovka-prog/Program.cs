@@ -1,6 +1,15 @@
-﻿namespace textovka_prog
+﻿<<<<<<<<< Temporary merge branch 1
+﻿// See https://aka.ms/new-console-template for more information
+using textovka_prog;
+
+TestovaciTrida Objekt = new TestovaciTrida(); 
+Objekt.TestovaciMetodaTridy("hello there"); 
+
+
+=========
+﻿namespace textovka_prog 
 {
-    class Program
+    class Program 
     {
         public static Hrac aktualniHrac = new Hrac();
         static void Main(string[] args)
@@ -25,3 +34,4 @@
         }
     }
 }
+>>>>>>>>> Temporary merge branch 2
