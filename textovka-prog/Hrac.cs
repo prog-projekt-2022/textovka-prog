@@ -14,6 +14,6 @@ namespace textovka_prog
         public int poskozeni = 1;
         public int hodnotabrneni = 1;
         public int lektvary = 5;
-
+        public int hodnotazbrane = 1; 
     }
 }

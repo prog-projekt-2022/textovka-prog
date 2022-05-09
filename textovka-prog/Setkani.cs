@@ -8,6 +8,7 @@ namespace textovka_prog
 {
     internal class Setkani
     {
+        Random rand = new Random();
         //setkani default
 
 
@@ -36,11 +37,37 @@ namespace textovka_prog
             while (zd > 0)
             {
                 Console.WriteLine("====================");
-                Console.WriteLine("| (U)Utok (B)ranit |");
+                Console.WriteLine("| (U)tok (B)ranit |");
                 Console.WriteLine("| (R)Utek (L)ektvar|");
                 Console.WriteLine("====================");
                 Console.WriteLine("Potions:"+Program.aktualniHrac.lektvary+" Zdravi: "+Program.aktualniHrac.zdravi);
-                string akce = Console.ReadLine();
+                string vybranaakce = Console.ReadLine();
+                if(vybranaakce.ToLower() == "u" || input.ToLower() == "utok" || input.ToLower() == "útok")
+                {
+                    //utok
+                    Console.WriteLine("text utoku");
+                    int poskozeni = sila - Program.aktualniHrac.hodnotabrneni;
+                    int utok = rand.Next(1, Program.aktualniHrac.hodnotazbrane) + rand.Next(1, 4);
+                    Console.WriteLine("text vysledku");
+                    zdravi -= utok;
+                }
+                else if(vybranaakce.ToLower() == "b" || input.ToLower() == "branit" || input.ToLower() == "bránit")
+                {
+                    //branit
+                }
+                else if(vybranaakce.ToLower() == "r" || input.ToLower() == "utek" || input.ToLower() == "útěk")
+                {
+                    //utek
+                }
+                else if(vybranaakce.ToLower() == "l" || input.ToLower() == "lektvar")
+                {
+                    //lektvar
+                }
+                else
+                {
+                    Console.WriteLine("Špatný vstup!");
+                }
+                Console.ReadKey();
             }
         }
     }
