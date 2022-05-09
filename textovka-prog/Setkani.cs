@@ -54,10 +54,33 @@ namespace textovka_prog
                 else if(vybranaakce.ToLower() == "b" || input.ToLower() == "branit" || input.ToLower() == "bránit")
                 {
                     //branit
+                    Console.WriteLine("text obrany");
+                    int poskozeni = (sila / 4) - Program.aktualniHrac.hodnotabrneni;
+                    if(poskozeni < 0)
+                    {
+                        poskozeni = 0;
+                    }
+                    int utok = rand.Next(1, Program.aktualniHrac.hodnotazbrane) / 2;
+                    Console.WriteLine("text vysledku");
+                    zdravi -= utok;
                 }
                 else if(vybranaakce.ToLower() == "r" || input.ToLower() == "utek" || input.ToLower() == "útěk")
                 {
                     //utek
+                    if(rand.Next(0, 2) == 0)
+                    {
+                        Console.WriteLine("text uteku");
+                        int poskozeni = sila - Program.aktualniHrac.hodnotabrneni;
+                        if(poskozeni < 0)
+                        {
+                            poskozeni = 0;
+                        }
+                        Console.WriteLine("text spatneho vysledku");
+                    }
+                    else
+                    {
+                        Console.WriteLine("text dobreho vysledku");
+                    }
                 }
                 else if(vybranaakce.ToLower() == "l" || input.ToLower() == "lektvar")
                 {
