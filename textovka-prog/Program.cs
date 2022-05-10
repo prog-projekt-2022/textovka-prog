@@ -6,6 +6,7 @@
         static void Main(string[] args)
         {
             Start();
+            Setkani.PrvniSetkani();
         }
         static void Start()
         {
