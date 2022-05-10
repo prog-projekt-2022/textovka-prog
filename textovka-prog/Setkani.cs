@@ -8,19 +8,19 @@ namespace textovka_prog
 {
     internal class Setkani
     {
-        Random rand = new Random();
+        Random rand = new Random();                                         //třída random pro generování náhodných čísel
         //setkani default
 
 
         //setkani
-        public static void PrvniSetkani()
+        public static void PrvniSetkani()                                   //metoda prvni setkání (jenom pro napsání storylinu)
         {
             Console.WriteLine("storyline pro prvni setkani");
             Souboj(false, "Neznámý nepřítel",1 ,4);
         }
 
         //nastroje stekani
-        public static void Souboj(bool random, string jmeno, int si, int zd)
+        public static void Souboj(bool random, string jmeno, int si, int zd) //základní metoda pro fighting systém
         {
             string jm = "";
             int si = 0;
@@ -29,7 +29,7 @@ namespace textovka_prog
             {
 
             }
-            
+
             else
             {
                 jm = jmeno;
@@ -41,13 +41,13 @@ namespace textovka_prog
             {
                 Console.WriteLine(jm);
                 Console.WriteLine(si + "/"+ zd);
-                Console.WriteLine("====================");
+                Console.WriteLine("====================");                  //text-based gui které se ukazuje během souboje
                 Console.WriteLine("| (U)tok (B)ranit |");
                 Console.WriteLine("| (R)Utek (L)ektvar|");
                 Console.WriteLine("====================");
-                Console.WriteLine("Potions:"+Program.aktualniHrac.lektvary+" Zdravi: "+Program.aktualniHrac.zd);
-                string vybranaakce = Console.ReadLine();
-                if(vybranaakce.ToLower() == "u" || input.ToLower() == "utok" || input.ToLower() == "útok")
+                Console.WriteLine("Potions:"+Program.aktualniHrac.lektvary+" Zdravi: "+Program.aktualniHrac.zd); //vypsání hodnot inventáře hráče
+                string vybranaAkce = Console.ReadLine();
+                if(vybranaAkce.ToLower() == "u" || input.ToLower() == "utok" || input.ToLower() == "útok")
                 {
                     //utok
                     Console.WriteLine("text utoku");
@@ -57,7 +57,7 @@ namespace textovka_prog
                     zd -= utok;
                 }
 
-                else if(vybranaakce.ToLower() == "b" || input.ToLower() == "branit" || input.ToLower() == "bránit")
+                else if(vybranaAkce.ToLower() == "b" || input.ToLower() == "branit" || input.ToLower() == "bránit")
                 {
                     //branit
                     Console.WriteLine("text obrany");
@@ -71,7 +71,7 @@ namespace textovka_prog
                     zd -= utok;
                 }
 
-                else if(vybranaakce.ToLower() == "r" || input.ToLower() == "utek" || input.ToLower() == "útěk")
+                else if(vybranaAkce.ToLower() == "r" || input.ToLower() == "utek" || input.ToLower() == "útěk")
                 {
                     //utek
                     if(rand.Next(0, 2) == 0)
@@ -91,7 +91,7 @@ namespace textovka_prog
                     }
                 }
 
-                else if(vybranaakce.ToLower() == "l" || input.ToLower() == "lektvar")
+                else if(vybranaAkce.ToLower() == "l" || input.ToLower() == "lektvar")
                 {
                     //lektvar
                     if(Program.aktualniHrac.lektvar == 0)
@@ -118,6 +118,7 @@ namespace textovka_prog
                     Console.WriteLine("Špatný vstup!");
                 }
                 Console.ReadKey();
+                Console.Clear();        //každý cyklus se vymaže terminál
             }
         }
     }
