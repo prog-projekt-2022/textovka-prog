@@ -38,19 +38,15 @@ namespace ConsoleApp4
             if (input == "p" || Console.ReadLine().lektvar();
             {
 
-
             }
             else if (input == "z" || Console.ReadLine().zbran();
             {
-
 
             }
             else if (input == "o" || Console.ReadLine().obrana();
             {
 
-
             }
-
 
         }
         static void ZkusitKoupit(string vec, int cena, Hrac p)
@@ -59,24 +55,30 @@ namespace ConsoleApp4
             {
                 if (!p.vec == "lektvar")
                     p.lektvar++;
+                Console.WriteLine("Koupil sis Lektvar a byl přidán do tvého inventáře.");
             }
 
             if (p.penize >= cena)
             {
                 if (!p.vec == "zbran")
                     p.zbran++;
+                Console.WriteLine("Koupil sis Zbraň a byla přidána do tvého invenáře.");
             }
 
             if (p.penize >= cena)
             {
                 if (!p.vec == "obrana")
                     p.obrana++;
+                Console.WriteLine("Koupil sis Brněna a bylo přidáno do tvého inventáře.");
             }
 
             else
             {
-                Console.WriteLine("Si moc chudy");
+                Console.WriteLine("Sorry" +aktualniHrac.jmeno + ",");
                 Console.ReadKey();
+                Console.WriteLine("I can't give credit.")
+                Console.ReadKey();
+                Console.WriteLine("Come back when you're a little mmmmmmmmmmmmmmmm richer!");
             }
             p.penize -= cena;
         }
