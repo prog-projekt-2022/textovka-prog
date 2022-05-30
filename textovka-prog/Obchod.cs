@@ -8,7 +8,9 @@ namespace ConsoleApp4
 {
     public class Obchod
     {
-        
+        static int brnenimod;
+        static int zbranmod;
+        static int difmod;
 
         public static void NacistObchod(Hrac p)
         {
@@ -43,7 +45,7 @@ namespace ConsoleApp4
             {
 
             }
-            else if (input == "o" || Console.ReadLine().obrana();
+            else (input == "o" || Console.ReadLine().obrana();
             {
 
             }
@@ -76,7 +78,7 @@ namespace ConsoleApp4
             {
                 Console.WriteLine("Sorry" +aktualniHrac.jmeno + ",");
                 Console.ReadKey();
-                Console.WriteLine("I can't give credit.")
+                Console.WriteLine("I can't give credit.");
                 Console.ReadKey();
                 Console.WriteLine("Come back when you're a little mmmmmmmmmmmmmmmm richer!");
             }

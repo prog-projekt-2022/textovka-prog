@@ -3,7 +3,7 @@
     class Program 
     {
         public static Hrac aktualniHrac = new Hrac();
-        public static bool hlavniLoop = true
+        public static bool hlavniLoop = true;
         static void Main(string[] args)
         {
             Start();

@@ -21,15 +21,35 @@ namespace textovka_prog
         }
         public static void ZakladniSouboj(string informace)
         {
+            Console.Clear(); 
             Console.WriteLine(informace);
             Console.ReadKey();
             Souboj(true, "", 0, 0);
         }
         public static void ZakladniSouboj()
         {
+            Console.Clear();
             Console.WriteLine("Z ničeho nic se před tebou něco objeví, ještě před tím než stihneš zareagovat zaútočí to, podaří se ti obránit.");
             Console.ReadKey();
             Souboj(true, "", 0, 0);
+        }
+        public static void NahodnySouboj()
+        {
+            switch (rng.Next(0, 1))
+            {
+                case 0:
+                    Souboj();
+                    break;
+                case 1:
+                    KouzelnikSouboj();
+                    break;
+            }
+        }
+        public static void KouzelnikSouboj()
+        {
+            Console.Clear();
+            Console.WriteLine("");
+            Souboj(false, "The Kouzelnik", 4, 4);
         }
         //nastroje stekani
         public static void Souboj(bool random, string jmeno, int sila, int zdravi) //základní metoda pro fighting systém
@@ -40,8 +60,8 @@ namespace textovka_prog
             if (random)
             {
                 jm = DostanJmeno();
-                si = rng.Next(jm.Length / rng.Next(0, 3));
-                zd = rng.Next(jm.Length / rng.Next(0, 2));
+                si = Program.aktualniHrac.DostanSilu();
+                zd = Program.aktualniHrac.DostanZdravi();
             }
 
             else
@@ -133,6 +153,15 @@ namespace textovka_prog
                         }
                         Console.WriteLine("Ztrácíš " + poskozeni + " zdraví");
                     }
+                    Console.ReadKey(); 
+                }
+                if (Program.aktualniHrac.zdravi <= 0)
+                {
+                    Console.WriteLine("You died.");
+                    Console.ReadKey();
+                    Console.WriteLine("Zabil tě "+ jm +" .");
+                    Console.ReadKey();
+                    System.Enviroment.Exit(0);
                 }
 
                 else
@@ -143,6 +172,7 @@ namespace textovka_prog
                 Console.Clear();        //každý cyklus se vymaže terminál
                 int penize = rng.Next(10, 50);
                 Console.WriteLine("Po zneškodnění" + jm + " dostáváš " + penize + " zlaťáků.");
+                Program.aktualniHrac.penize += penize;
                 Console.ReadKey();
             }
         }
@@ -160,7 +190,7 @@ namespace textovka_prog
                     return "Entita "+ rng.Next(0, 9999);
                 case 4:
                     {
-                        if (rng.Next() == 727)
+                        if (rng.Next() == 727 || 7270)
                         {
                             return "Tvoje máma";
                         }
