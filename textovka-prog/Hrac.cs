@@ -8,7 +8,7 @@ namespace textovka_prog
 {
     internal class Hrac
     {
-        Random rand;
+        Random rng;
 
         public string jmeno = "";
         public int penize = 0;
@@ -24,13 +24,13 @@ namespace textovka_prog
         {
             int horni = (2 * mods + 5);
             int dolni = (mods + 2);
-            return rand.Next(horni, dolni);
+            return rng.Next(horni, dolni);
         }
         public int DostanSilu()
         {
             int horni = (2 * mods + 1);
             int dolni = (mods +1);
-            return rand.Next(horni, dolni);
+            return rng.Next(horni, dolni);
         }
     }
 }

@@ -4,20 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp4
+namespace textovka_prog
 {
-    public class Obchod
+    internal class Obchod
     {
+        int prdel = Program.aktualniHrac.DostanSilu();
         static int brnenimod;
         static int zbranmod;
         static int difmod;
 
-        public static void NacistObchod(Hrac p)
+        public static void NacistObchod()
         {
-            SpustitObchod(p);
+            SpustitObchod();
         }
 
-        public static void SpustitObchod(Hrac p)
+        public static void SpustitObchod()
         {
             int cenalektvaru = 50;
             int cenabrneni = 100;
@@ -33,19 +34,19 @@ namespace ConsoleApp4
                 //pockej na odpoved
             }
 
-            string input = Console.ReadLine().snizit();
+            string input = Console.ReadLine().snizit());
 
 
 
-            if (input == "p" || Console.ReadLine().lektvar();
+            if (input == "p" || Console.ReadLine().lektvar());
             {
 
             }
-            else if (input == "z" || Console.ReadLine().zbran();
+            else if (input == "z" || Console.ReadLine().zbran());
             {
 
             }
-            else (input == "o" || Console.ReadLine().obrana();
+            else (input == "o" || Console.ReadLine().obrana);
             {
 
             }

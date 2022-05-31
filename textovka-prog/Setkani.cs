@@ -38,7 +38,7 @@ namespace textovka_prog
             switch (rng.Next(0, 1))
             {
                 case 0:
-                    Souboj();
+                    Souboj(true, "",0 , 0);
                     break;
                 case 1:
                     KouzelnikSouboj();
@@ -161,7 +161,7 @@ namespace textovka_prog
                     Console.ReadKey();
                     Console.WriteLine("Zabil tě "+ jm +" .");
                     Console.ReadKey();
-                    System.Enviroment.Exit(0);
+                    System.Environment.Exit(0);
                 }
 
                 else
@@ -190,7 +190,7 @@ namespace textovka_prog
                     return "Entita "+ rng.Next(0, 9999);
                 case 4:
                     {
-                        if (rng.Next() == 727 || 7270)
+                        if (rng.Next(0, 999) == 727)
                         {
                             return "Tvoje máma";
                         }
