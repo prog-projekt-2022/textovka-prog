@@ -8,13 +8,14 @@ namespace textovka_prog
 {
     internal class Obchod
     {
-        int prdel = Program.aktualniHrac.DostanSilu();
         static int brnenimod;
         static int zbranmod;
         static int difmod;
 
         public static void NacistObchod()
         {
+            Console.WriteLine("Lamp Oil? Rope? Bombs? You want it? It's yours my friend, as long as you have enough Penize!");
+            Console.WriteLine("Máš " + Program.aktualniHrac.penize + " peněz");
             SpustitObchod();
         }
 
@@ -38,15 +39,15 @@ namespace textovka_prog
 
 
 
-            if (input == "p" || Console.ReadLine().lektvar());
+            if (input == "p" || Console.ReadLine().lektvar())
             {
 
             }
-            else if (input == "z" || Console.ReadLine().zbran());
+            else if (input == "z" || Console.ReadLine().zbran())
             {
 
             }
-            else (input == "o" || Console.ReadLine().obrana);
+            else (input == "o" || Console.ReadLine().obrana())
             {
 
             }
@@ -54,36 +55,36 @@ namespace textovka_prog
         }
         static void ZkusitKoupit(string vec, int cena, Hrac p)
         {
-            if (p.penize >= cena)
+            if (Program.aktualniHrac.penize >= cena)
             {
-                if (!p.vec == "lektvar")
-                    p.lektvar++;
+                if (!Program.aktualniHrac.vec == "lektvar")
+                    Program.aktualniHrac.lektvary++;
                 Console.WriteLine("Koupil sis Lektvar a byl přidán do tvého inventáře.");
             }
 
-            if (p.penize >= cena)
+            if (Program.aktualniHrac.penize >= cena)
             {
-                if (!p.vec == "zbran")
-                    p.zbran++;
+                if (!Program.aktualniHrac.vec == "zbran")
+                    Program.aktualniHrac.hodnotazbrane++;
                 Console.WriteLine("Koupil sis Zbraň a byla přidána do tvého invenáře.");
             }
 
-            if (p.penize >= cena)
+            if (Program.aktualniHrac.penize >= cena)
             {
-                if (!p.vec == "obrana")
-                    p.obrana++;
+                if (!Program.aktualniHrac.vec == "obrana")
+                    Program.aktualniHrac.hodnotabrneni++;
                 Console.WriteLine("Koupil sis Brněna a bylo přidáno do tvého inventáře.");
             }
 
             else
             {
-                Console.WriteLine("Sorry" +aktualniHrac.jmeno + ",");
+                Console.WriteLine("Sorry " +Program.aktualniHrac.jmeno + ",");
                 Console.ReadKey();
                 Console.WriteLine("I can't give credit.");
                 Console.ReadKey();
                 Console.WriteLine("Come back when you're a little mmmmmmmmmmmmmmmm richer!");
             }
-            p.penize -= cena;
+            Program.aktualniHrac.penize -= cena;
         }
 
 

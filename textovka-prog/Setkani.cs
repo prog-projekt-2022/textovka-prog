@@ -178,7 +178,7 @@ namespace textovka_prog
         }
         public static string DostanJmeno()
         {
-            switch (rng.Next(0, 4))
+            switch (rng.Next(0, 12))
             {
                 case 0:
                     return "Kostivec";
@@ -198,7 +198,33 @@ namespace textovka_prog
                         {
                             return "Modrý Balvan";
                         }
-                    }       
+                    }
+                 case 5:
+                    return "Slime";
+                 case 6:
+                    return "Steve";
+                 case 7:
+                    return "Tobiáš";
+                 case 8:
+                    return "Gargamel";
+                 case 9:
+                    return "BaBajay";
+                 case 10:
+                    return "Shroud";
+                 case 11:
+                    {
+                        if (rng.Next(0, 999) == 666)
+                        {
+                            return "Ninja with ligma";
+                        }
+                        else
+                        {
+                            return "Ninja";
+                        }
+                    }
+                 case 12:
+                    return "MrBeast";
+
             }
             return "Shrek";
         }
