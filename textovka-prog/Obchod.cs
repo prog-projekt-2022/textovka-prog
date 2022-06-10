@@ -8,74 +8,113 @@ namespace textovka_prog
 {
     internal class Obchod
     {
-        static int brnenimod;
-        static int zbranmod;
-        static int difmod;
 
-        public static void NacistObchod()
+        public static string ZkuseniVstupu(string vstup)
+        {
+            try
+            {
+                if (vstup == null)
+                {
+                    Console.WriteLine("Špatný vstup!");
+                }
+                else
+                {
+                    return vstup;
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Špatný vstup!");
+            }
+            return "spatny";
+        }
+
+        public static void NacistObchod(Hrac hrac)
         {
             Console.WriteLine("Lamp Oil? Rope? Bombs? You want it? It's yours my friend, as long as you have enough Penize!");
             Console.WriteLine("Máš " + Program.aktualniHrac.penize + " peněz");
-            SpustitObchod();
+            SpustitObchod(hrac);
         }
 
-        public static void SpustitObchod()
+        public static void SpustitObchod(Hrac hrac)
         {
-            int cenalektvaru = 50;
-            int cenabrneni = 100;
-            int cenazbrane = 100;
+            int cenalektvaru;
+            int cenabrneni;
+            int cenazbrane;
+            int cenaobtiznosthry;
 
             while (true)
             {
+
+                cenalektvaru = 20 + 10 *hrac.modif;
+                cenabrneni = 100 * hrac.hodnotabrneni;
+                cenazbrane = 100 * hrac.hodnotazbrane;
+                cenaobtiznosthry = 300 + 100 *hrac.modif;
+
                 Console.Clear();
                 Console.WriteLine("=======Obchod=======");
-                Console.WriteLine("|(L)ektvar (Z)bran|");
-                Console.WriteLine("|    (O)brana     |");
+                Console.WriteLine("|(L)ektvar (Z)braň|");
+                Console.WriteLine("|    (B)rnění     |");
+                Console.WriteLine("| (M)btiznost hry |");
+                Console.WriteLine("====================");
+                Console.WriteLine("O(dejít)");
+                Console.WriteLine("=======Staty=======");
+                Console.WriteLine("|Sila zbreaně: "+ hrac.hodnotazbrane);
+                Console.WriteLine("|Zdraví: "+ hrac.zdravi);
+                Console.WriteLine("|Peníze: "+ hrac.penize);
+                Console.WriteLine("|Odolnost brnění: "+ hrac.hodnotabrneni);
+                Console.WriteLine("|Pocet lektvarů: "+ hrac.lektvary);
+                Console.WriteLine("|Obtiznost hry: "+ hrac.modif);
                 Console.WriteLine("====================");
                 //pockej na odpoved
+
+            string vstup = ZkuseniVstupu(Console.ReadLine().ToLower());
+            if (vstup == "spatny")
+            {
+                Console.WriteLine("Špatný vstup.");
             }
 
-            string input = Console.ReadLine().snizit());
-
-
-
-            if (input == "p" || Console.ReadLine().lektvar())
+            if (vstup == "l" || vstup == "lektvar")
             {
-
+                ZkusitKoupit(0, cenalektvaru, hrac);
             }
-            else if (input == "z" || Console.ReadLine().zbran())
+            else if (vstup == "z" || vstup == "zbran" || vstup == "zbraň")
             {
-
+                ZkusitKoupit(1, cenazbrane, hrac);
             }
-            else (input == "o" || Console.ReadLine().obrana())
+            else if (vstup == "b" || vstup == "brneni"|| vstup == "brnění")
             {
-
+                ZkusitKoupit(2, cenabrneni, hrac);
+            }
+            else if (vstup == "m" || vstup == "obtiznost"|| vstup == "obtiznost hry")
+            {
+                ZkusitKoupit(3, cenaobtiznosthry, hrac);
+            }
+            else if (vstup == "o" || vstup == "exit" || vstup =="odejít")
+                break;
             }
 
         }
-        static void ZkusitKoupit(string vec, int cena, Hrac p)
+        static void ZkusitKoupit(int vec, int cena, Hrac hrac)
         {
-            if (Program.aktualniHrac.penize >= cena)
+            if (hrac.penize >= cena)
             {
-                if (!Program.aktualniHrac.vec == "lektvar")
-                    Program.aktualniHrac.lektvary++;
-                Console.WriteLine("Koupil sis Lektvar a byl přidán do tvého inventáře.");
+                switch (vec)
+                {
+                    case 0:
+                        hrac.lektvary++;
+                        break;
+                    case 1:
+                        hrac.hodnotazbrane++;
+                        break;
+                    case 2:
+                        hrac.hodnotabrneni++;
+                        break;
+                    case 3:
+                        hrac.modif++;
+                        break;
+                }
             }
-
-            if (Program.aktualniHrac.penize >= cena)
-            {
-                if (!Program.aktualniHrac.vec == "zbran")
-                    Program.aktualniHrac.hodnotazbrane++;
-                Console.WriteLine("Koupil sis Zbraň a byla přidána do tvého invenáře.");
-            }
-
-            if (Program.aktualniHrac.penize >= cena)
-            {
-                if (!Program.aktualniHrac.vec == "obrana")
-                    Program.aktualniHrac.hodnotabrneni++;
-                Console.WriteLine("Koupil sis Brněna a bylo přidáno do tvého inventáře.");
-            }
-
             else
             {
                 Console.WriteLine("Sorry " +Program.aktualniHrac.jmeno + ",");

@@ -11,6 +11,26 @@ namespace textovka_prog
         static Random rng = new Random();
         //setkani default
 
+        public static string ZkuseniVstupu(string vstup)
+        {
+            try
+            {
+                if (vstup == null)
+                {
+                    Console.WriteLine("Špatný vstup!");
+                    return "spatny";
+                }
+                else
+                {
+                    return vstup;
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Špatný vstup!");
+            }
+            return "spatny";
+        }
 
         //setkani
         public static void PrvniSetkani()                                   //metoda prvni setkání (jenom pro napsání storylinu)
@@ -81,99 +101,101 @@ namespace textovka_prog
                 Console.WriteLine("| (R)Utek (L)ektvar|");
                 Console.WriteLine("====================");
                 Console.WriteLine("Potions:"+Program.aktualniHrac.lektvary+" Zdravi: "+Program.aktualniHrac.zdravi); //vypsání hodnot inventáře hráče
-                string vybranaAkce = Console.ReadLine();
-                if(vybranaAkce.ToLower() == "u" || vybranaAkce.ToLower() == "utok" || vybranaAkce.ToLower() == "útok")
-                {
-                    //utok
-                    Console.WriteLine("text utoku");
-                    int poskozeni = si - Program.aktualniHrac.hodnotabrneni;
-                    int utok = rng.Next(1, Program.aktualniHrac.hodnotazbrane) + rng.Next(1, 4);
-                    Console.WriteLine("Ztratil jsi " +poskozeni + " zdraví a udělil jsi " + utok +" poškození.");
-                    zd -= utok;
-                }
 
-                else if(vybranaAkce.ToLower() == "b" || vybranaAkce.ToLower() == "branit" || vybranaAkce.ToLower() == "bránit")
+                string vybranaAkce = ZkuseniVstupu(Console.ReadLine());
+                if (vybranaAkce != "spatny")
                 {
-                    //branit
-                    Console.WriteLine("text obrany");
-                    int poskozeni = (si / 4) - Program.aktualniHrac.hodnotabrneni;
-                    if(poskozeni < 0)
+                    if (vybranaAkce.ToLower() == "u" || vybranaAkce.ToLower() == "utok" || vybranaAkce.ToLower() == "útok")
                     {
-                        poskozeni = 0;
-                    }
-                    int utok = rng.Next(1, Program.aktualniHrac.hodnotazbrane) / 2;
-                    Console.WriteLine("Ztrácíš " + poskozeni + " zdraví a udělil jsi " + utok + " poškození.");
-                    zd -= utok;
-                }
-
-                else if(vybranaAkce.ToLower() == "r" || vybranaAkce.ToLower() == "utek" || vybranaAkce.ToLower() == "útěk")
-                {
-                    //utek
-                    if(rng.Next(0, 2) == 0)
-                    {
-                        Console.WriteLine("text uteku");
+                        //utok
+                        Console.WriteLine("text utoku");
                         int poskozeni = si - Program.aktualniHrac.hodnotabrneni;
-                        if(poskozeni < 0)
-                        {
-                            poskozeni = 0;
-                        }
-                        Console.WriteLine("text spatneho vysledku");
+                        int utok = rng.Next(1, Program.aktualniHrac.hodnotazbrane) + rng.Next(1, 4);
+                        Console.WriteLine("Ztratil jsi " +poskozeni + " zdraví a udělil jsi " + utok +" poškození.");
+                        zd -= utok;
                     }
-                    else
-                    {
-                        Console.WriteLine("text dobreho vysledku");
-                        Console.ReadKey();
-                    }
-                }
 
-                else if(vybranaAkce.ToLower() == "l" || vybranaAkce.ToLower() == "lektvar")
-                {
-                    //lektvar
-                    if(Program.aktualniHrac.lektvary == 0)
+                    else if (vybranaAkce.ToLower() == "b" || vybranaAkce.ToLower() == "branit" || vybranaAkce.ToLower() == "bránit")
                     {
-                        Console.WriteLine("Nemáš žádné lektvary!");
-                        int poskozeni = si - Program.aktualniHrac.hodnotabrneni;
-                        if(poskozeni > 0)
-                        {
-                            poskozeni = 0;
-                        }
-                        Console.WriteLine(jm+" tě udeří a ztratíš "+poskozeni+" zdraví!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Úspěšně vypiješ lektvar.");
-                        int lektvarV = 5;
-                        Console.WriteLine("Regeneruješ"+lektvarV+"zdraví!");   
-                        Program.aktualniHrac.zdravi += lektvarV;
-                        Console.WriteLine("Mezi tím co jsi pil lektvar protivník zaútočil.");
-                        int poskozeni = (si / 2) - Program.aktualniHrac.hodnotabrneni;
+                        //branit
+                        Console.WriteLine("text obrany");
+                        int poskozeni = (si / 4) - Program.aktualniHrac.hodnotabrneni;
                         if (poskozeni < 0)
                         {
                             poskozeni = 0;
                         }
-                        Console.WriteLine("Ztrácíš " + poskozeni + " zdraví");
+                        int utok = rng.Next(1, Program.aktualniHrac.hodnotazbrane) / 2;
+                        Console.WriteLine("Ztrácíš " + poskozeni + " zdraví a udělil jsi " + utok + " poškození.");
+                        zd -= utok;
                     }
-                    Console.ReadKey(); 
-                }
-                if (Program.aktualniHrac.zdravi <= 0)
-                {
-                    Console.WriteLine("You died.");
-                    Console.ReadKey();
-                    Console.WriteLine("Zabil tě "+ jm +" .");
-                    Console.ReadKey();
-                    System.Environment.Exit(0);
-                }
 
-                else
-                {
-                    Console.WriteLine("Špatný vstup!");
+                    else if (vybranaAkce.ToLower() == "r" || vybranaAkce.ToLower() == "utek" || vybranaAkce.ToLower() == "útěk")
+                    {
+                        //utek
+                        if (rng.Next(0, 2) == 0)
+                        {
+                            Console.WriteLine("text uteku");
+                            int poskozeni = si - Program.aktualniHrac.hodnotabrneni;
+                            if (poskozeni < 0)
+                            {
+                                poskozeni = 0;
+                            }
+                            Console.WriteLine("text spatneho vysledku");
+                        }
+                        else
+                        {
+                            Console.WriteLine("text dobreho vysledku");
+                            Console.ReadKey();
+                            Obchod.NacistObchod(Program.aktualniHrac);
+                        }
+                    }
+
+                    else if (vybranaAkce.ToLower() == "l" || vybranaAkce.ToLower() == "lektvar")
+                    {
+                        //lektvar
+                        if (Program.aktualniHrac.lektvary == 0)
+                        {
+                            Console.WriteLine("Nemáš žádné lektvary!");
+                            int poskozeni = si - Program.aktualniHrac.hodnotabrneni;
+                            if (poskozeni > 0)
+                            {
+                                poskozeni = 0;
+                            }
+                            Console.WriteLine(jm+" tě udeří a ztratíš "+poskozeni+" zdraví!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Úspěšně vypiješ lektvar.");
+                            int lektvarV = 5;
+                            Console.WriteLine("Regeneruješ"+lektvarV+"zdraví!");
+                            Program.aktualniHrac.zdravi += lektvarV;
+                            Console.WriteLine("Mezi tím co jsi pil lektvar protivník zaútočil.");
+                            int poskozeni = (si / 2) - Program.aktualniHrac.hodnotabrneni;
+                            if (poskozeni < 0)
+                            {
+                                poskozeni = 0;
+                            }
+                            Console.WriteLine("Ztrácíš " + poskozeni + " zdraví");
+                        }
+                        Console.ReadKey();
+                    }
+                    if (Program.aktualniHrac.zdravi <= 0)
+                    {
+                        Console.WriteLine("You died.");
+                        Console.ReadKey();
+                        Console.WriteLine("Zabil tě "+ jm +" .");
+                        Console.ReadKey();
+                        System.Environment.Exit(0);
+                    }
+                    Console.ReadKey();
+                    Console.Clear();        //každý cyklus se vymaže terminál
+
+
+                    int penize = Program.aktualniHrac.DostanPenize();
+                    Console.WriteLine("Po zneškodnění " + jm + " dostáváš " + penize + " zlaťáků.");
+                    Program.aktualniHrac.penize += penize;
+                    Console.ReadKey();
                 }
-                Console.ReadKey();
-                Console.Clear();        //každý cyklus se vymaže terminál
-                int penize = rng.Next(10, 50);
-                Console.WriteLine("Po zneškodnění" + jm + " dostáváš " + penize + " zlaťáků.");
-                Program.aktualniHrac.penize += penize;
-                Console.ReadKey();
             }
         }
         public static string DostanJmeno()

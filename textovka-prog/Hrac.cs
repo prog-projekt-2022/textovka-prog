@@ -6,31 +6,39 @@ using System.Threading.Tasks;
 
 namespace textovka_prog
 {
+    [Serializable]
     internal class Hrac
     {
-        Random rng;
+        Random rng = new Random();
 
         public string jmeno = "";
-        public int penize = 0;
+        public int id;
+        public int penize = 30000;
         public int zdravi = 10;
         public int poskozeni = 1;
         public int hodnotabrneni = 1;
         public int lektvary = 5;
         public int hodnotazbrane = 1;
 
-        public int mods = 0;
+        public int modif = 0;
 
         public int DostanZdravi()
         {
-            int horni = (2 * mods + 5);
-            int dolni = (mods + 2);
+            int horni = (modif +2);
+            int dolni = (2 * modif + 5);
             return rng.Next(horni, dolni);
         }
         public int DostanSilu()
         {
-            int horni = (2 * mods + 1);
-            int dolni = (mods +1);
+            int horni = (modif +1);
+            int dolni = (2 * modif + 1);
             return rng.Next(horni, dolni);
+        }
+        public int DostanPenize()
+        {
+            int horni = (15 * modif + 50);
+            int dolni = (10* modif +10);
+            return rng.Next(dolni, horni);
         }
     }
 }
