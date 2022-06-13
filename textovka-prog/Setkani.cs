@@ -113,6 +113,13 @@ namespace textovka_prog
                         int utok = rng.Next(1, Program.aktualniHrac.hodnotazbrane) + rng.Next(1, 4);
                         Console.WriteLine("Ztratil jsi " +poskozeni + " zdraví a udělil jsi " + utok +" poškození.");
                         zd -= utok;
+                        if (utok > zd)
+                        {
+                            int penize = Program.aktualniHrac.DostanPenize();
+                            Console.WriteLine("Po zneškodnění " + jm + " dostáváš " + penize + " zlaťáků.");
+                            Program.aktualniHrac.penize += penize;
+                            Console.ReadKey();
+                        }
                     }
 
                     else if (vybranaAkce.ToLower() == "b" || vybranaAkce.ToLower() == "branit" || vybranaAkce.ToLower() == "bránit")
@@ -127,6 +134,13 @@ namespace textovka_prog
                         int utok = rng.Next(1, Program.aktualniHrac.hodnotazbrane) / 2;
                         Console.WriteLine("Ztrácíš " + poskozeni + " zdraví a udělil jsi " + utok + " poškození.");
                         zd -= utok;
+                        if (utok > zd)
+                        {
+                            int penize = Program.aktualniHrac.DostanPenize();
+                            Console.WriteLine("Po zneškodnění " + jm + " dostáváš " + penize + " zlaťáků.");
+                            Program.aktualniHrac.penize += penize;
+                            Console.ReadKey();
+                        }
                     }
 
                     else if (vybranaAkce.ToLower() == "r" || vybranaAkce.ToLower() == "utek" || vybranaAkce.ToLower() == "útěk")
@@ -134,17 +148,17 @@ namespace textovka_prog
                         //utek
                         if (rng.Next(0, 2) == 0)
                         {
-                            Console.WriteLine("text uteku");
+                            Console.WriteLine("Napodařilo se ti utéct.");
                             int poskozeni = si - Program.aktualniHrac.hodnotabrneni;
                             if (poskozeni < 0)
                             {
                                 poskozeni = 0;
                             }
-                            Console.WriteLine("text spatneho vysledku");
+                            Console.WriteLine("Dostáváš" + poskozeni + " poškození.");
                         }
                         else
                         {
-                            Console.WriteLine("text dobreho vysledku");
+                            Console.WriteLine("Utekl jsi" + jmeno + " ,po cestě ses rozhodl v obchodě dopnit zásoby.");
                             Console.ReadKey();
                             Obchod.NacistObchod(Program.aktualniHrac);
                         }
@@ -189,13 +203,8 @@ namespace textovka_prog
                     }
                     Console.ReadKey();
                     Console.Clear();        //každý cyklus se vymaže terminál
-
-
-                    int penize = Program.aktualniHrac.DostanPenize();
-                    Console.WriteLine("Po zneškodnění " + jm + " dostáváš " + penize + " zlaťáků.");
-                    Program.aktualniHrac.penize += penize;
-                    Console.ReadKey();
                 }
+
             }
         }
         public static string DostanJmeno()

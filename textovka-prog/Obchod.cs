@@ -31,9 +31,8 @@ namespace textovka_prog
 
         public static void NacistObchod(Hrac hrac)
         {
-            Console.WriteLine("Lamp Oil? Rope? Bombs? You want it? It's yours my friend, as long as you have enough Penize!");
-            Console.WriteLine("Máš " + Program.aktualniHrac.penize + " peněz");
             SpustitObchod(hrac);
+            Console.WriteLine("Lamp Oil? Rope? Bombs? You want it? It's yours my friend, as long as you have enough Penize!");
         }
 
         public static void SpustitObchod(Hrac hrac)
@@ -52,6 +51,8 @@ namespace textovka_prog
                 cenaobtiznosthry = 300 + 100 *hrac.modif;
 
                 Console.Clear();
+                Console.WriteLine("Máš " + Program.aktualniHrac.penize + " peněz");
+
                 Console.WriteLine("=======Obchod=======");
                 Console.WriteLine("|(L)ektvar (Z)braň|");
                 Console.WriteLine("|    (B)rnění     |");
@@ -74,24 +75,26 @@ namespace textovka_prog
                 Console.WriteLine("Špatný vstup.");
             }
 
-            if (vstup == "l" || vstup == "lektvar")
-            {
-                ZkusitKoupit(0, cenalektvaru, hrac);
-            }
-            else if (vstup == "z" || vstup == "zbran" || vstup == "zbraň")
-            {
-                ZkusitKoupit(1, cenazbrane, hrac);
-            }
-            else if (vstup == "b" || vstup == "brneni"|| vstup == "brnění")
-            {
-                ZkusitKoupit(2, cenabrneni, hrac);
-            }
-            else if (vstup == "m" || vstup == "obtiznost"|| vstup == "obtiznost hry")
-            {
-                ZkusitKoupit(3, cenaobtiznosthry, hrac);
-            }
-            else if (vstup == "o" || vstup == "exit" || vstup =="odejít")
-                break;
+                if (vstup == "l" || vstup == "lektvar")
+                {
+                    ZkusitKoupit(0, cenalektvaru, hrac);
+                }
+                else if (vstup == "z" || vstup == "zbran" || vstup == "zbraň")
+                {
+                    ZkusitKoupit(1, cenazbrane, hrac);
+                }
+                else if (vstup == "b" || vstup == "brneni"|| vstup == "brnění")
+                {
+                    ZkusitKoupit(2, cenabrneni, hrac);
+                }
+                else if (vstup == "m" || vstup == "obtiznost"|| vstup == "obtiznost hry")
+                {
+                    ZkusitKoupit(3, cenaobtiznosthry, hrac);
+                }
+                else if (vstup == "o" || vstup == "exit" || vstup =="odejít")
+                    break;
+                else
+                    Console.WriteLine("Špatný vstup!");
             }
 
         }
@@ -103,16 +106,21 @@ namespace textovka_prog
                 {
                     case 0:
                         hrac.lektvary++;
+                        Program.aktualniHrac.penize -= cena;
                         break;
                     case 1:
                         hrac.hodnotazbrane++;
+                        Program.aktualniHrac.penize -= cena;
                         break;
                     case 2:
                         hrac.hodnotabrneni++;
+                        Program.aktualniHrac.penize -= cena;
                         break;
                     case 3:
                         hrac.modif++;
+                        Program.aktualniHrac.penize -= cena;
                         break;
+
                 }
             }
             else
@@ -122,8 +130,8 @@ namespace textovka_prog
                 Console.WriteLine("I can't give credit.");
                 Console.ReadKey();
                 Console.WriteLine("Come back when you're a little mmmmmmmmmmmmmmmm richer!");
+                Console.ReadKey();
             }
-            Program.aktualniHrac.penize -= cena;
         }
 
 

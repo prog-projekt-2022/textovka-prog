@@ -20,12 +20,12 @@ namespace textovka_prog
             {
                 Setkani.NahodnySouboj();
             }
-            Ulozit();
+            //Ulozit();
         }
         static void Start()
         {
-            Console.WriteLine("Nazev Hry");
-            Console.WriteLine("Tvoje Jméno:");
+            Console.WriteLine("Napiš tam název hry");
+            Console.WriteLine("Napiš Tvoje Jméno:");
             aktualniHrac.jmeno = Console.ReadLine();
             Console.Clear();
             Console.WriteLine("Nějaký storyline tady {0}", aktualniHrac.jmeno); //ve storylinu nejak pouzit jmeno zadane hracem
@@ -35,12 +35,12 @@ namespace textovka_prog
             }
             else
             {
-                Console.WriteLine("Říkají ti: {0}", aktualniHrac.jmeno);
+                Console.WriteLine("Říkají ti {0}", aktualniHrac.jmeno);
             }
             Console.ReadKey();
             Console.Clear();
         }
-        public static void Ulozit()
+        /*public static void Ulozit()
         {
             BinaryFormatter binForm = new BinaryFormatter();
             string cesta = "saves/" + aktualniHrac.id.ToString();
@@ -103,6 +103,6 @@ namespace textovka_prog
                     Console.ReadKey();
                 }
             }
-        }
+        }*/
     }
 }
